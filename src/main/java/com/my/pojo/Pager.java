@@ -1,9 +1,12 @@
 package com.my.pojo;
 
+/**
+ * Paging helper class
+ */
 public class Pager {
-	private int curPage;// 待显示页
-	private int perPageRows;// 每页显示的记录数
-	private int rowCount; // 记录总数
+	private int curPage;// current page
+	private int perPageRows;// number of products in one page
+	private int rowCount; // total number of products
 	public int getCurPage() {
 		return curPage;
 	}
@@ -22,11 +25,11 @@ public class Pager {
 	public void setRowCount(int rowCount) {
 		this.rowCount = rowCount;
 	}
-	// 根据rowCount和perPageRows计算总页数
+	// Calculate the total number of pages
 	public int getPageCount() {
 		return (rowCount + perPageRows - 1) / perPageRows;
 	}
-	// 分页显示时，获取当前页的第一条记录的索引
+	// Get the index of the first product on the current page
 	public int getFirstLimitParam() {
 		return (this.curPage - 1) * this.perPageRows;
 	}

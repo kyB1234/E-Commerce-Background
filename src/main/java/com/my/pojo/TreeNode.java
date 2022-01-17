@@ -3,10 +3,10 @@ package com.my.pojo;
 import java.util.List;
 
 public class TreeNode {
-	private int id;  // 节点id
-	private String text;  // 节点名称
-	private int fid;   // 父节点id
-	private List<TreeNode> children; // 包含的子节点
+	private int id;  // node id
+	private String text;  // node name
+	private int fid;   // father id
+	private List<TreeNode> children; // children
 	public int getId() {
 		return id;
 	}

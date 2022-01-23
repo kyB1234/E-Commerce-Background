@@ -33,7 +33,7 @@ public interface ProductInfoDao {
 		@Result(column = "price", property = "price"), 
 		@Result(column = "intro", property = "intro"),
 		@Result(column = "status", property = "status"),
-		@Result(column = "tid", property = "type", one = @One(select = "com.ecpbm.dao.TypeDao.selectById", fetchType = FetchType.EAGER)) })
+		@Result(column = "tid", property = "type", one = @One(select = "com.my.dao.TypeDao.selectById", fetchType = FetchType.EAGER)) })
 	@SelectProvider(type = ProductInfoDynaSqlProvider.class, method = "selectWithParam")
 	public List<ProductInfo> selectByPage(Map<String, Object> params);
 	

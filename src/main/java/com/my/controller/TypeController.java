@@ -20,11 +20,12 @@ public class TypeController {
 	@RequestMapping("/getType/{flag}")
 	@ResponseBody
 	public List<Type> getType(@PathVariable("flag") Integer flag) {
+		System.out.println("into get type success!");
 		List<Type> typeList = typeService.getAll();
 		if (flag == 1) {
 			Type t = new Type();
 			t.setId(0);
-			t.setName("请选择...");
+			t.setName("Please select...");
 			typeList.add(0, t);
 		}
 		return typeList;

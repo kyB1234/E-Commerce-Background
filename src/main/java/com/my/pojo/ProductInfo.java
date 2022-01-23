@@ -85,5 +85,4 @@ public class ProductInfo {
 	public void setType(Type type) {
 		this.type = type;
 	}
-
 }

@@ -24,7 +24,7 @@ public interface OrderInfoDao {
 	 * @return
 	 */
 	@Results({
-		@Result(column = "uid", property = "ui", one = @One(select = "com.ecpbm.dao.UserInfoDao.getUserInfoById", fetchType = FetchType.EAGER)) })
+		@Result(column = "uid", property = "ui", one = @One(select = "com.my.dao.UserInfoDao.getUserInfoById", fetchType = FetchType.EAGER)) })
 	@SelectProvider(type = OrderInfoDynaSqlProvider.class, method = "selectWithParam")
 	List<OrderInfo> selectByPage(Map<String, Object> params);
 	
@@ -61,7 +61,7 @@ public interface OrderInfoDao {
 	 * @return
 	 */
 	@Results({
-		@Result(column = "uid", property = "ui", one = @One(select = "com.ecpbm.dao.UserInfoDao.getUserInfoById", fetchType = FetchType.EAGER)) })
+		@Result(column = "uid", property = "ui", one = @One(select = "com.my.dao.UserInfoDao.getUserInfoById", fetchType = FetchType.EAGER)) })
 	@Select("select * from order_info where id = #{id}")
 	public OrderInfo getOrderInfoById(int id);
 	
@@ -71,7 +71,7 @@ public interface OrderInfoDao {
 	 * @return
 	 */
 	@Results({
-		@Result(column = "pid", property = "pi", one = @One(select = "com.ecpbm.dao.ProductInfoDao.getProductInfoById", fetchType = FetchType.EAGER)) })
+		@Result(column = "pid", property = "pi", one = @One(select = "com.my.dao.ProductInfoDao.getProductInfoById", fetchType = FetchType.EAGER)) })
 	@Select("select * from order_detail where oid = #{oid}")
 	public List<OrderDetail> getOrderDetailByOid(int oid);
 	

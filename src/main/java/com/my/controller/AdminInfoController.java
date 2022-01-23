@@ -46,7 +46,7 @@ public class AdminInfoController {
 	@RequestMapping("getTree")
 	@ResponseBody
 	public List<TreeNode> getTree(@RequestParam(value = "adminid") String adminid) {
-		System.out.println("into login gettree success!");
+		System.out.println("into login get tree success!");
 		AdminInfo admininfo = adminInfoService.getAdminInfoAndFunctions(Integer.parseInt(adminid));
 		List<TreeNode> nodes = new ArrayList<TreeNode>();
 		List<Functions> functionsList = admininfo.getFs();

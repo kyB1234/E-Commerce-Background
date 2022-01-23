@@ -24,10 +24,10 @@
             
         </div>
         <div class="row" style="height: 70%;">
-            <div class="col-md-1 column">
+            <div class="col-md-0.5 column">
             </div>
-            <div class="col-md-10 column p-4 border bg-light" style="border-radius: 20px; height: 100%;">
-                <div class="row" style="height: 100%; overflow: auto;">
+            <div class="col-md-11.5 column p-4 border bg-light" style="border-radius: 20px; height: 100%;">
+                <div class="row" style="height: 100%;">
                     <div class="col-md-3 column" style="height: 100%; overflow: auto;">
                         <div class="flex-shrink-0 p-3 bg-white" style="width: 95%;" id="slide-pannel">
                             <a class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
@@ -38,32 +38,20 @@
                                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                 </svg>
                                 &nbsp&nbsp&nbsp
-                                <span class="fs-5 fw-semibold">Welcome</span>
+                                <span id="adminName" class="fs-5 fw-semibold">Welcome</span>
                             </a>
                             <ul id="FnTree" class="list-unstyled ps-0">
-                                <li class="mb-1">
-                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#home-collapse" aria-expanded="false">
-                                        Home
-                                    </button>
-                                    <div class="collapse" id="home-collapse">
-                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                            <li><a href="#" class="link-dark rounded">Overview</a></li>
-                                            <li><a href="#" class="link-dark rounded">Updates</a></li>
-                                            <li><a href="#" class="link-dark rounded">Reports</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-9 column border bg-light" style="height: 100%; overflow: auto; border-radius: 20px;">
-                        <iframe src="" frameborder="0" style="height: 100%; width: 100%"></iframe>
+                    <div class="col-md-9 column border bg-light" style="height: 100%; border-radius: 20px;">
+                        <iframe id="funcDetail" src="" frameborder="0" style="height: 100%; width: 100%; overflow: hidden !important;"></iframe>
                     </div>
                 </div>
                 
             </div>
-            <div class="col-md-1 column">
+            <div class="col-md-0.5 column">
             </div>
         </div>
     </div>
@@ -76,7 +64,7 @@
                 tree += "<div class=\"collapse\" id=\"collapse-" + node.id + "\">";
                 tree += "<ul class=\"btn-toggle-nav list-unstyled fw-normal pb-1 small\">";
                 for (let i = 0; i < node.children.length; ++i) {
-                    tree += "<li><button class=\"btn subtree rounded\">" + node.children[i].text + "</button></li>";
+                    tree += "<li><button class=\"btn subtree rounded\" id=\"collapse-" + node.children[i].id + "\">" + node.children[i].text + "</button></li>";
                 }
                 tree += "</ul></div>";
             }
@@ -87,7 +75,6 @@
             type: 'POST',
             url: 'admininfo/getTree?adminid=${sessionScope.admin.id}',
             success: function(result) {
-                console.log(result);
                 if (result[0].children) {
                     let tree = "";
                     for (let i = 0; i < result[0].children.length; ++i) {
@@ -100,6 +87,11 @@
                 $('#FnTree').append(exit);
             }
         });
+        $('#adminName').text('Welcome, ${sessionScope.admin.name}');
+        $('#FnTree').on('click', '#collapse-3', () => {
+            console.log('collapse-3 click run');
+            $('#funcDetail').attr('src', 'productlist.jsp')
+        })
     </script>
 </body>
 

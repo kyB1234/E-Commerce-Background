@@ -1,6 +1,6 @@
 package com.my.controller;
 
-import java.io.File;
+//import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,19 +81,20 @@ public class ProductInfoController {
 	@ResponseBody
 	public String updateProduct(ProductInfo pi, @RequestParam(value = "file", required = false) MultipartFile file,
 			HttpServletRequest request, ModelMap model) {
-		// 服务器端upload文件夹物理路径
-		String path = request.getSession().getServletContext().getRealPath("product_images");
-		// 获取文件名
-		String fileName = file.getOriginalFilename();
-		// 实例化一个File对象，表示目标文件（含物理路径）
-		File targetFile = new File(path, fileName);
-		if (!targetFile.exists()) {
-			targetFile.mkdirs();
-		}
+		// // 服务器端upload文件夹物理路径
+		// String path = request.getSession().getServletContext().getRealPath("product_images");
+		// // 获取文件名
+		// String fileName = file.getOriginalFilename();
+		// // 实例化一个File对象，表示目标文件（含物理路径）
+		// File targetFile = new File(path, fileName);
+		// if (!targetFile.exists()) {
+		// 	targetFile.mkdirs();
+		// }
 		try {
-			// 将上传文件写到服务器上指定的文件
-			file.transferTo(targetFile);
-			pi.setPic(fileName);
+			// // 将上传文件写到服务器上指定的文件
+			// file.transferTo(targetFile);
+			// pi.setPic(fileName);
+			System.out.println("into product edit controller success!");
 			productInfoService.modifyProductInfo(pi);
 			return "{\"success\":\"true\",\"message\":\"商品修改成功\"}";
 		} catch (Exception e) {
@@ -107,6 +108,7 @@ public class ProductInfoController {
 	public String deleteProduct(@RequestParam(value = "id") String id, @RequestParam(value = "flag") String flag) {
 		String str = "";
 		try {
+			System.out.println("into product delete controller success!");
 			productInfoService.modifyStatus(id.substring(0, id.length() - 1), Integer.parseInt(flag));
 			str = "{\"success\":\"true\",\"message\":\"删除成功\"}";
 		} catch (Exception e) {

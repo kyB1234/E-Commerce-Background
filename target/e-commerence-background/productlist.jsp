@@ -47,18 +47,18 @@
                                   </svg>
                                 &nbspAdd
                             </button>
-                            <button class="btn btn-light d-flex align-items-center" type="button" style="margin-right: 3px; font-size: small;">
+                            <button class="btn btn-light d-flex align-items-center" id="edit" type="button" data-bs-toggle="modal" data-bs-target="#editModal" style="margin-right: 3px; font-size: small;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                                   </svg>
                                 &nbspEdit
                             </button>
-                            <button class="btn btn-light d-flex align-items-center" type="button" style="margin-right: 3px; font-size: small;">
+                            <button class="btn btn-light d-flex align-items-center" id="delete_prod" type="button" style="margin-right: 3px; font-size: small;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
                                     <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z"/>
                                     <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
                                 </svg>
-                                &nbspDelete
+                                &nbspOff-Shelves
                             </button>
                         </div>
                     </div>
@@ -202,8 +202,111 @@
                                     <div class="col-2"></div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" style="font-size: 13px;">Save</button>
-                                    <button type="button" class="btn btn-outline-secondary" style="font-size: 13px;">Clear</button>
+                                    <button type="button" id="add_submit" class="btn btn-primary" data-bs-dismiss="modal" style="font-size: 13px;">Save</button>
+                                    <button type="reset"  class="btn btn-outline-secondary" style="font-size: 13px;">Clear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add product</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editForm">
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span >status</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-select" name="status" id="edit_status">
+                                            <option value="0">sold out</option>
+                                            <option value="1">on sale</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span >type</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-select" name="type.id" id="edit_type">
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span>name</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="name" class="form-control" id="edit_name">
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span>code</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="code" class="form-control" id="edit_code">
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span>brand</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="code" class="form-control" id="edit_brand">
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span>number</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="num" class="form-control" id="edit_num">
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span>price</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="price" class="form-control" id="edit_price">
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-2"></div>
+                                    <div class="col-2" style="display: flex; flex-direction:column;justify-content: center;text-align: center;">
+                                        <span>intro</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <textarea class="form-control" name="intro" id="edit_intro" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="edit_submit" class="btn btn-primary" data-bs-dismiss="modal" style="font-size: 13px;">Save</button>
+                                    <button type="button" id="edit_reset"  class="btn btn-outline-secondary" style="font-size: 13px;">Reset</button>
                                 </div>
                             </form>
                         </div>
@@ -224,7 +327,7 @@
                         }
                         $('#prod_type').append(typeSelect);
                         $('#add_type').append(typeSelect)
-                        
+                        $('#edit_type').append(typeSelect);
                     }
                 });
                 loadTable("", "", '0', "", '0', '0');
@@ -336,9 +439,9 @@
                 $('#productTable').bootstrapTable('destroy');
                 loadTable(prod_code, prod_name, prod_tid, prod_brand, prod_priceFrom, prod_priceTo);
             });
-            $('#addForm').submit(() => {
-                console.log("add submit run")
+            $('#add_submit').click(() => {
                 $.ajax({
+                    async: false,
                     type: "post",
                     url: "productinfo/addProduct",
                     dataType: "json",
@@ -353,12 +456,102 @@
                         price: $('#add_price').val()
                     },
                     success: (result) => {
-                        if (result.success == true) {
-                            $('#productTable').bootstrapTable('refresh');
-                        }
                         alert(result.message);
                     }
                 });
+                $('#productTable').bootstrapTable('refresh');
+            });
+            var editModal = document.getElementById('editModal');
+            var edit_rows;
+            editModal.addEventListener('shown.bs.modal', function (event) {
+                edit_rows = $('#productTable').bootstrapTable('getSelections');
+                if (edit_rows.length == 1) {
+                    let edit_row = edit_rows[0];
+                    $('#edit_status').prop('selectedIndex', edit_row.status);
+                    $('#edit_type').prop('selectedIndex', edit_row.type.id);
+                    $('#edit_name').val(edit_row.name);
+                    $('#edit_code').val(edit_row.code);
+                    $('#edit_brand').val(edit_row.brand);
+                    $('#edit_num').val(edit_row.num);
+                    $('#edit_price').val(edit_row.price);
+                    $('#edit_intro').val(edit_row.intro);
+                } else if (edit_rows.length == 0) {
+                    alert('please select a product');
+                    $('#editModal').hide();
+                    $('.modal-backdrop').remove();
+                    location.reload();
+                } else {
+                    alert('only alow edit one product');
+                    $('#editModal').hide();
+                    $('.modal-backdrop').remove();
+                    $('#productTable').bootstrapTable('refresh');
+                    location.reload();
+                }
+            });
+            $('#edit_submit').click(() => {
+                $.ajax({
+                    async:false,
+                    type: "post",
+                    url: "productinfo/updateProduct",
+                    dataType: "json",
+                    data: {
+                        id: edit_rows[0].id,
+                        status: $('#edit_status').children('option:selected').val(),
+                        "type.id": $('#edit_type').children('option:selected').val(),
+                        name: $('#edit_name').val(),
+                        code: $('#edit_code').val(),
+                        brand: $('#edit_brand').val(),
+                        num: $('#edit_num').val(),
+                        intro: $('#edit_intro').val(),
+                        price: $('#edit_price').val()
+                    },
+                    success: (result) => {
+                        alert(result.message); 
+                    }
+                });
+                $('#productTable').bootstrapTable('refresh');
+            })
+            $('#editForm').submit(() => {
+                
+            });
+            $('#edit_reset').click(() => {
+                let selectedRow = selectedRows[0];
+                $('#edit_status').prop('selectedIndex', selectedRow.status);
+                $('#edit_type').prop('selectedIndex', selectedRow.type.id);
+                $('#edit_name').val(selectedRow.name);
+                $('#edit_code').val(selectedRow.code);
+                $('#edit_brand').val(selectedRow.brand);
+                $('#edit_num').val(selectedRow.num);
+                $('#edit_price').val(selectedRow.price);
+                $('#edit_intro').val(selectedRow.intro);
+            });
+            $('#delete_prod').click(() => {
+                let del_rows = $('#productTable').bootstrapTable('getSelections');
+                if (del_rows.length == 0) {
+                    alert('please select a product');
+                    return;
+                }
+                var det_conform = confirm("Confirm deletion?");
+                if (det_conform == true) {
+                    let ids = "";
+                    for (let i = 0; i < del_rows.length; ++i) {
+                        ids += del_rows[i].id + ",";
+                    }
+                    $.ajax({
+                        async: false,
+                        type: "post",
+                        url: "productinfo/deleteProduct",
+                        dataType: "json",
+                        data: {
+                            id: ids,
+                            flag: 0
+                        },
+                        success: (result) => {
+                            alert(result.message);
+                        }
+                    });
+                    $('#productTable').bootstrapTable('refresh');
+                }
             });
         </script>
     </body>

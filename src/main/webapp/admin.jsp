@@ -91,7 +91,7 @@
         $('#FnTree').on('click', '#collapse-3', () => {
             console.log('collapse-3 click run');
             $('#funcDetail').attr('src', 'productlist.jsp')
-        })
+        });
     </script>
 </body>
 
